@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Java + Web Technology Practicals Q1–Q16</title>
+<meta name="description" content="Sixteen Java and Web Technology practical questions with complete code, file names and step-by-step run instructions.">
+<style>
+body{font-family:Arial,sans-serif;line-height:1.55;margin:0;background:#f4f6f9;color:#202938}
+header{background:#173b67;color:white;padding:32px 18px;text-align:center}
+main{max-width:1000px;margin:24px auto;padding:0 16px}
+article{background:white;margin:18px 0;padding:22px;border-radius:10px;box-shadow:0 2px 8px #00000012}
+h2{color:#173b67;font-size:1.2rem}
+pre{white-space:pre-wrap;overflow-x:auto;background:#111827;color:#e5e7eb;padding:16px;border-radius:8px;font-size:13px}
+code{font-family:Consolas,monospace}
+.tag{color:#2563eb;font-weight:bold}
+a{color:#dbeafe}
+small{color:#5b6472}
+</style>
+</head>
+<body>
+<header><h1>Java + Web Technology Practicals</h1><p>Questions 1–16 | Question + Code + Run Steps</p></header>
+<main>
+<p><b>Note:</b> Q1–Q6 run as normal Java programs. Q7–Q10 require Apache Tomcat. Q11 requires MySQL and MySQL Connector/J. Q12–Q16 run in a browser.</p>
+
+<article>
+<h2>Q1. Create a Java program to manage Student details using a Student class with name, rollNumber and marks. Include inputDetails() and displayDetails().</h2>
+<p><span class='tag'>File:</span> <code>Student.java</code> &nbsp; <span class='tag'>Type:</span> Java</p>
+<h3>Steps to run</h3><ol>
+<li>Save as Student.java.</li>
+<li>Open CMD/VS Code terminal in that folder.</li>
+<li>Run: javac Student.java</li>
+<li>Run: java Student</li>
+</ol><h3>Program code</h3><pre><code>import java.util.Scanner;
+
+class Student {
+    String name;
+    int rollNumber;
+    float marks;
+
+    void inputDetails() {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print(&quot;Enter Student Name: &quot;);
+        name = sc.nextLine();
+
+        System.out.print(&quot;Enter Roll Number: &quot;);
+        rollNumber = sc.nextInt();
+
+        System.out.print(&quot;Enter Marks: &quot;);
+        marks = sc.nextFloat();
+    }
+
+    void displayDetails() {
+        System.out.println(&quot;\n--- Student Details ---&quot;);
+        System.out.println(&quot;Name: &quot; + name);
+        System.out.println(&quot;Roll Number: &quot; + rollNumber);
+        System.out.println(&quot;Marks: &quot; + marks);
+    }
+
+    public static void main(String[] args) {
+        Student s = new Student();
+        s.inputDetails();
+        s.displayDetails();
+    }
+}</code></pre></article>
+<article>
+<h2>Q2. Create a Calculator class demonstrating constructor overloading: a default constructor prints a welcome message; a parameterized constructor accepts two numbers and displays their sum.</h2>
+<p><span class='tag'>File:</span> <code>Calculator.java</code> &nbsp; <span class='tag'>Type:</span> Java</p>
+<h3>Steps to run</h3><ol>
+<li>Save as Calculator.java.</li>
+<li>Run: javac Calculator.java</li>
+<li>Run: java Calculator</li>
+</ol><h3>Program code</h3><pre><code>class Calculator {
+    Calculator() {
+        System.out.println(&quot;Welcome to Calculator!&quot;);
+    }
+
+    Calculator(int a, int b) {
+        System.out.println(&quot;Sum = &quot; + (a + b));
+    }
+
+    public static void main(String[] args) {
+        Calculator c1 = new Calculator();
+        Calculator c2 = new Calculator(10, 20);
+    }
+}</code></pre></article>
+<article>
+<h2>Q3. Create a Calculator class demonstrating method overloading with add(): no parameters (5 + 10), two integer parameters, and three float parameters.</h2>
+<p><span class='tag'>File:</span> <code>MethodOverloading.java</code> &nbsp; <span class='tag'>Type:</span> Java</p>
+<h3>Steps to run</h3><ol>
+<li>Save as MethodOverloading.java.</li>
+<li>Run: javac MethodOverloading.java</li>
+<li>Run: java MethodOverloading</li>
+</ol><h3>Program code</h3><pre><code>class Calculator {
+    void add() {
+        System.out.println(&quot;Sum = &quot; + (5 + 10));
+    }
+
+    void add(int a, int b) {
+        System.out.println(&quot;Sum = &quot; + (a + b));
+    }
+
+    void add(float a, float b, float c) {
+        System.out.println(&quot;Sum = &quot; + (a + b + c));
+    }
+
+    public static void main(String[] args) {
+        Calculator obj = new Calculator();
+
+        obj.add();
+        obj.add(20, 30);
+        obj.add(2.5f, 3.5f, 4.0f);
+    }
+}</code></pre></article>
+<article>
+<h2>Q4. Demonstrate single inheritance: Person has name and age; Student extends Person and adds course and rollNumber.</h2>
+<p><span class='tag'>File:</span> <code>SingleInheritance.java</code> &nbsp; <span class='tag'>Type:</span> Java</p>
+<h3>Steps to run</h3><ol>
+<li>Save as SingleInheritance.java.</li>
+<li>Run: javac SingleInheritance.java</li>
+<li>Run: java SingleInheritance</li>
+</ol><h3>Program code</h3><pre><code>class Person {
+    String name;
+    int age;
+}
+
+class Student extends Person {
+    String course;
+    int rollNumber;
+
+    void display() {
+        System.out.println(&quot;Name: &quot; + name);
+        System.out.println(&quot;Age: &quot; + age);
+        System.out.println(&quot;Course: &quot; + course);
+        System.out.println(&quot;Roll Number: &quot; + rollNumber);
+    }
+
+    public static void main(String[] args) {
+        Student s = new Student();
+        s.name = &quot;Rahul&quot;;
+        s.age = 20;
+        s.course = &quot;B.Tech&quot;;
+        s.rollNumber = 101;
+
+        s.display();
+    }
+}</code></pre></article>
+<article>
+<h2>Q5. Demonstrate multilevel inheritance by extending Student into GraduateStudent with an additional graduationYear attribute.</h2>
+<p><span class='tag'>File:</span> <code>MultilevelInheritance.java</code> &nbsp; <span class='tag'>Type:</span> Java</p>
+<h3>Steps to run</h3><ol>
+<li>Save as MultilevelInheritance.java.</li>
+<li>Run: javac MultilevelInheritance.java</li>
+<li>Run: java MultilevelInheritance</li>
+</ol><h3>Program code</h3><pre><code>class Person {
+    String name;
+    int age;
+}
+
+class Student extends Person {
+    String course;
+    int rollNumber;
+}
+
+class GraduateStudent extends Student {
+    int graduationYear;
+
+    void display() {
+        System.out.println(&quot;Name: &quot; + name);
+        System.out.println(&quot;Age: &quot; + age);
+        System.out.println(&quot;Course: &quot; + course);
+        System.out.println(&quot;Roll Number: &quot; + rollNumber);
+        System.out.println(&quot;Graduation Year: &quot; + graduationYear);
+    }
+
+    public static void main(String[] args) {
+        GraduateStudent g = new GraduateStudent();
+        g.name = &quot;Anjali&quot;;
+        g.age = 22;
+        g.course = &quot;M.Tech&quot;;
+        g.rollNumber = 456;
+        g.graduationYear = 2026;
+
+        g.display();
+    }
+}</code></pre></article>
+<article>
+<h2>Q6. Demonstrate hierarchical inheritance: Student, Teacher and Administrator inherit from Person and have their own attributes.</h2>
+<p><span class='tag'>File:</span> <code>HierarchicalInheritance.java</code> &nbsp; <span class='tag'>Type:</span> Java</p>
+<h3>Steps to run</h3><ol>
+<li>Save as HierarchicalInheritance.java.</li>
+<li>Run: javac HierarchicalInheritance.java</li>
+<li>Run: java HierarchicalInheritance</li>
+</ol><h3>Program code</h3><pre><code>class Person {
+    String name;
+    int age;
+
+    void displayPerson() {
+        System.out.println(&quot;Name: &quot; + name);
+        System.out.println(&quot;Age: &quot; + age);
+    }
+}
+
+class Student extends Person {
+    String course;
+    int rollNumber;
+
+    void displayStudent() {
+        displayPerson();
+        System.out.println(&quot;Course: &quot; + course);
+        System.out.println(&quot;Roll Number: &quot; + rollNumber);
+    }
+}
+
+class Teacher extends Person {
+    String subject;
+
+    void displayTeacher() {
+        displayPerson();
+        System.out.println(&quot;Subject: &quot; + subject);
+    }
+}
+
+class Administrator extends Person {
+    String department;
+
+    void displayAdministrator() {
+        displayPerson();
+        System.out.println(&quot;Department: &quot; + department);
+    }
+}
+
+public class HierarchicalInheritance {
+    public static void main(String[] args) {
+        Student s = new Student();
+        s.name = &quot;Rahul&quot;;
+        s.age = 20;
+        s.course = &quot;B.Tech&quot;;
+        s.rollNumber = 101;
+
+        Teacher t = new Teacher();
+        t.name = &quot;Meera&quot;;
+        t.age = 35;
+        t.subject = &quot;Java&quot;;
+
+        Administrator a = new Administrator();
+        a.name = &quot;Amit&quot;;
+        a.age = 40;
+        a.department = &quot;Administration&quot;;
+
+        System.out.println(&quot;--- Student Details ---&quot;);
+        s.displayStudent();
+
+        System.out.println(&quot;\n--- Teacher Details ---&quot;);
+        t.displayTeacher();
+
+        System.out.println(&quot;\n--- Administrator Details ---&quot;);
+        a.displayAdministrator();
+    }
+}</code></pre></article>
+<article>
+<h2>Q7. Write a Java Servlet program to display a welcome message in a web browser.</h2>
+<p><span class='tag'>File:</span> <code>WelcomeServlet.java</code> &nbsp; <span class='tag'>Type:</span> Servlet (Tomcat 10+)</p>
+<h3>Steps to run</h3><ol>
+<li>Install JDK and Apache Tomcat 10.1 or newer.</li>
+<li>Create a web project with WEB-INF/classes and WEB-INF/lib folders.</li>
+<li>Add the Jakarta Servlet API to the project compile classpath (or use a Maven web project with jakarta.servlet-api as provided).</li>
+<li>Save this class as WelcomeServlet.java and compile it against the Tomcat Jakarta Servlet API.</li>
+<li>Place WelcomeServlet.class in WEB-INF/classes; deploy the project under Tomcat webapps.</li>
+<li>Start Tomcat and open http://localhost:8080/ProjectName/welcome</li>
+</ol><h3>Program code</h3><pre><code>import java.io.IOException;
+import java.io.PrintWriter;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+@WebServlet(&quot;/welcome&quot;)
+public class WelcomeServlet extends HttpServlet {
+    @Override
+    protected void doGet(HttpServletRequest request,
+                         HttpServletResponse response)
+                         throws ServletException, IOException {
+        response.setContentType(&quot;text/html;charset=UTF-8&quot;);
+
+        PrintWriter out = response.getWriter();
+        out.println(&quot;&lt;!DOCTYPE html&gt;&quot;);
+        out.println(&quot;&lt;html&gt;&lt;body&gt;&quot;);
+        out.println(&quot;&lt;h1&gt;Welcome to Java Servlet Programming!&lt;/h1&gt;&quot;);
+        out.println(&quot;&lt;/body&gt;&lt;/html&gt;&quot;);
+    }
+}</code></pre></article>
+<article>
+<h2>Q8. Write a Servlet program to accept a user&#x27;s name from an HTML form and display the name.</h2>
+<p><span class='tag'>File:</span> <code>NameServlet.java</code> &nbsp; <span class='tag'>Type:</span> Servlet (Tomcat 10+)</p>
+<h3>Steps to run</h3><ol>
+<li>Use the same Tomcat web project setup as Q7.</li>
+<li>Save as NameServlet.java and compile against the Jakarta Servlet API.</li>
+<li>Place NameServlet.class in WEB-INF/classes and deploy the project.</li>
+<li>Start Tomcat and open http://localhost:8080/ProjectName/name.</li>
+<li>Enter a name and submit the form; the servlet displays the greeting.</li>
+</ol><h3>Program code</h3><pre><code>import java.io.IOException;
+import java.io.PrintWriter;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+@WebServlet(&quot;/name&quot;)
+public class NameServlet extends HttpServlet {
+    private void showForm(HttpServletResponse response,
+                          String message) throws IOException {
+        response.setContentType(&quot;text/html;charset=UTF-8&quot;);
+        PrintWriter out = response.getWriter();
+
+        out.println(&quot;&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;body&gt;&quot;);
+        out.println(&quot;&lt;h2&gt;Student Name Form&lt;/h2&gt;&quot;);
+        out.println(&quot;&lt;form method=&#x27;post&#x27; action=&#x27;name&#x27;&gt;&quot;);
+        out.println(&quot;Enter Name: &lt;input type=&#x27;text&#x27; name=&#x27;username&#x27; required&gt;&quot;);
+        out.println(&quot;&lt;input type=&#x27;submit&#x27; value=&#x27;Submit&#x27;&gt;&quot;);
+        out.println(&quot;&lt;/form&gt;&quot;);
+        if (message != null) {
+            out.println(&quot;&lt;h3&gt;&quot; + message + &quot;&lt;/h3&gt;&quot;);
+        }
+        out.println(&quot;&lt;/body&gt;&lt;/html&gt;&quot;);
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest request,
+                         HttpServletResponse response)
+                         throws ServletException, IOException {
+        showForm(response, null);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request,
+                          HttpServletResponse response)
+                          throws ServletException, IOException {
+        String name = request.getParameter(&quot;username&quot;);
+        if (name == null) name = &quot;&quot;;
+        name = name.replace(&quot;&amp;&quot;, &quot;&amp;amp;&quot;)
+                   .replace(&quot;&lt;&quot;, &quot;&amp;lt;&quot;)
+                   .replace(&quot;&gt;&quot;, &quot;&amp;gt;&quot;)
+                   .replace(&quot;\&quot;&quot;, &quot;&amp;quot;&quot;)
+                   .replace(&quot;&#x27;&quot;, &quot;&amp;#x27;&quot;);
+        showForm(response, &quot;Welcome &quot; + name);
+    }
+}</code></pre></article>
+<article>
+<h2>Q9. Write a JSP program to display a welcome message in a web browser.</h2>
+<p><span class='tag'>File:</span> <code>welcome.jsp</code> &nbsp; <span class='tag'>Type:</span> JSP (Tomcat 10+)</p>
+<h3>Steps to run</h3><ol>
+<li>Create or use a Tomcat web project.</li>
+<li>Save this file as welcome.jsp in the project web root (same level as WEB-INF).</li>
+<li>Deploy the project to Tomcat and start the server.</li>
+<li>Open http://localhost:8080/ProjectName/welcome.jsp in a browser.</li>
+</ol><h3>Program code</h3><pre><code>&lt;%@ page contentType=&quot;text/html;charset=UTF-8&quot; language=&quot;java&quot; %&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Welcome JSP&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Welcome to JSP Programming!&lt;/h1&gt;
+    &lt;p&gt;This is my first JSP program.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre></article>
+<article>
+<h2>Q10. Write a JSP program to display your name, register number and department.</h2>
+<p><span class='tag'>File:</span> <code>student.jsp</code> &nbsp; <span class='tag'>Type:</span> JSP (Tomcat 10+)</p>
+<h3>Steps to run</h3><ol>
+<li>Save as student.jsp in the Tomcat project&#x27;s web root.</li>
+<li>Edit the sample name, register number and department with your own details.</li>
+<li>Deploy the project and start Tomcat.</li>
+<li>Open http://localhost:8080/ProjectName/student.jsp.</li>
+</ol><h3>Program code</h3><pre><code>&lt;%@ page contentType=&quot;text/html;charset=UTF-8&quot; language=&quot;java&quot; %&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Student Details&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h2&gt;Student Information&lt;/h2&gt;
+    &lt;p&gt;Name: Your Name&lt;/p&gt;
+    &lt;p&gt;Register Number: 123456&lt;/p&gt;
+    &lt;p&gt;Department: Computer Engineering&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre></article>
+<article>
+<h2>Q11. Develop a JDBC application to manage student records with insert, update, delete and display operations.</h2>
+<p><span class='tag'>File:</span> <code>StudentJDBC.java</code> &nbsp; <span class='tag'>Type:</span> Java + MySQL JDBC</p>
+<h3>Database setup</h3><pre><code>CREATE DATABASE college;
+USE college;
+
+CREATE TABLE students (
+    roll_no INT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    marks FLOAT NOT NULL
+);</code></pre>
+<h3>Steps to run</h3><ol>
+<li>Install MySQL Server and create the database/table using the SQL below.</li>
+<li>Download MySQL Connector/J and add its JAR to the project&#x27;s referenced libraries/classpath.</li>
+<li>Update DB_USER and DB_PASSWORD in the code.</li>
+<li>Compile with the Connector/J JAR on the classpath: javac -cp .;mysql-connector-j.jar StudentJDBC.java (Windows).</li>
+<li>Run with: java -cp .;mysql-connector-j.jar StudentJDBC</li>
+</ol><h3>Program code</h3><pre><code>import java.sql.*;
+import java.util.Scanner;
+
+public class StudentJDBC {
+    static final String URL =
+        &quot;jdbc:mysql://localhost:3306/college&quot;;
+    static final String USER = &quot;root&quot;;
+    static final String PASSWORD = &quot;your_password&quot;;
+
+    public static void main(String[] args) {
+        try (Scanner sc = new Scanner(System.in);
+             Connection con = DriverManager.getConnection(
+                 URL, USER, PASSWORD)) {
+
+            while (true) {
+                System.out.println(&quot;\n1.Insert  2.Update  3.Delete  4.Display  5.Exit&quot;);
+                System.out.print(&quot;Enter choice: &quot;);
+                int choice = sc.nextInt();
+
+                if (choice == 1) {
+                    System.out.print(&quot;Roll number: &quot;);
+                    int roll = sc.nextInt();
+                    sc.nextLine();
+                    System.out.print(&quot;Name: &quot;);
+                    String name = sc.nextLine();
+                    System.out.print(&quot;Marks: &quot;);
+                    float marks = sc.nextFloat();
+
+                    String sql = &quot;INSERT INTO students VALUES (?, ?, ?)&quot;;
+                    try (PreparedStatement ps = con.prepareStatement(sql)) {
+                        ps.setInt(1, roll);
+                        ps.setString(2, name);
+                        ps.setFloat(3, marks);
+                        ps.executeUpdate();
+                        System.out.println(&quot;Record inserted.&quot;);
+                    }
+                } else if (choice == 2) {
+                    System.out.print(&quot;Roll number to update: &quot;);
+                    int roll = sc.nextInt();
+                    sc.nextLine();
+                    System.out.print(&quot;New name: &quot;);
+                    String name = sc.nextLine();
+                    System.out.print(&quot;New marks: &quot;);
+                    float marks = sc.nextFloat();
+
+                    String sql = &quot;UPDATE students SET name=?, marks=? WHERE roll_no=?&quot;;
+                    try (PreparedStatement ps = con.prepareStatement(sql)) {
+                        ps.setString(1, name);
+                        ps.setFloat(2, marks);
+                        ps.setInt(3, roll);
+                        System.out.println(ps.executeUpdate() + &quot; record(s) updated.&quot;);
+                    }
+                } else if (choice == 3) {
+                    System.out.print(&quot;Roll number to delete: &quot;);
+                    int roll = sc.nextInt();
+
+                    try (PreparedStatement ps = con.prepareStatement(
+                            &quot;DELETE FROM students WHERE roll_no=?&quot;)) {
+                        ps.setInt(1, roll);
+                        System.out.println(ps.executeUpdate() + &quot; record(s) deleted.&quot;);
+                    }
+                } else if (choice == 4) {
+                    try (Statement st = con.createStatement();
+                         ResultSet rs = st.executeQuery(
+                             &quot;SELECT * FROM students ORDER BY roll_no&quot;)) {
+                        System.out.println(&quot;Roll No\tName\tMarks&quot;);
+                        while (rs.next()) {
+                            System.out.println(
+                                rs.getInt(&quot;roll_no&quot;) + &quot;\t&quot; +
+                                rs.getString(&quot;name&quot;) + &quot;\t&quot; +
+                                rs.getFloat(&quot;marks&quot;));
+                        }
+                    }
+                } else if (choice == 5) {
+                    System.out.println(&quot;Exiting...&quot;);
+                    break;
+                } else {
+                    System.out.println(&quot;Invalid choice.&quot;);
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println(&quot;Database error: &quot; + e.getMessage());
+        }
+    }
+}</code></pre></article>
+<article>
+<h2>Q12. Develop a student registration form with appropriate CSS styling.</h2>
+<p><span class='tag'>File:</span> <code>registration.html</code> &nbsp; <span class='tag'>Type:</span> HTML + CSS</p>
+<h3>Steps to run</h3><ol>
+<li>Save as registration.html.</li>
+<li>Open the file in a browser, or use VS Code Live Server.</li>
+<li>Fill in the form and click Register. This is a front-end form; it does not save data to a database.</li>
+</ol><h3>Program code</h3><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Student Registration&lt;/title&gt;
+    &lt;style&gt;
+        body {
+            font-family: Arial, sans-serif;
+            background: #eef2f7;
+        }
+        .form-box {
+            width: 350px;
+            margin: 40px auto;
+            padding: 22px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px #bbb;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            box-sizing: border-box;
+        }
+        button {
+            background: #2563eb;
+            color: white;
+            border: 0;
+            cursor: pointer;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class=&quot;form-box&quot;&gt;
+        &lt;h2&gt;Student Registration&lt;/h2&gt;
+        &lt;form&gt;
+            &lt;input type=&quot;text&quot; placeholder=&quot;Full Name&quot; required&gt;
+            &lt;input type=&quot;email&quot; placeholder=&quot;Email ID&quot; required&gt;
+            &lt;input type=&quot;text&quot; placeholder=&quot;Roll Number&quot; required&gt;
+            &lt;select required&gt;
+                &lt;option value=&quot;&quot;&gt;Select Department&lt;/option&gt;
+                &lt;option&gt;Computer Engineering&lt;/option&gt;
+                &lt;option&gt;Information Technology&lt;/option&gt;
+                &lt;option&gt;Electronics&lt;/option&gt;
+            &lt;/select&gt;
+            &lt;button type=&quot;submit&quot;&gt;Register&lt;/button&gt;
+        &lt;/form&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre></article>
+<article>
+<h2>Q13. Design a college department webpage with faculty details, course information and contact details.</h2>
+<p><span class='tag'>File:</span> <code>department.html</code> &nbsp; <span class='tag'>Type:</span> HTML + CSS</p>
+<h3>Steps to run</h3><ol>
+<li>Save as department.html.</li>
+<li>Open in a browser or use VS Code Live Server.</li>
+<li>Edit the sample faculty, course and contact information as required by your college.</li>
+</ol><h3>Program code</h3><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;College Department&lt;/title&gt;
+    &lt;style&gt;
+        body { font-family: Arial, sans-serif; margin: 0; background: #f4f6f8; }
+        header { background: #173b67; color: white; padding: 22px; text-align: center; }
+        section { background: white; margin: 18px auto; padding: 18px; max-width: 850px; }
+        h2 { color: #173b67; }
+        footer { background: #173b67; color: white; padding: 15px; text-align: center; }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;h1&gt;Computer Engineering Department&lt;/h1&gt;
+        &lt;p&gt;Welcome to our department&lt;/p&gt;
+    &lt;/header&gt;
+
+    &lt;section&gt;
+        &lt;h2&gt;Faculty Details&lt;/h2&gt;
+        &lt;p&gt;Dr. A. Sharma - Head of Department&lt;/p&gt;
+        &lt;p&gt;Prof. R. Patil - Assistant Professor&lt;/p&gt;
+        &lt;p&gt;Prof. S. Desai - Lecturer&lt;/p&gt;
+    &lt;/section&gt;
+
+    &lt;section&gt;
+        &lt;h2&gt;Courses Offered&lt;/h2&gt;
+        &lt;ul&gt;
+            &lt;li&gt;Diploma in Computer Engineering&lt;/li&gt;
+            &lt;li&gt;Bachelor of Engineering in Computer Engineering&lt;/li&gt;
+            &lt;li&gt;Web Development and Database Systems&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/section&gt;
+
+    &lt;footer&gt;
+        &lt;h2&gt;Contact Details&lt;/h2&gt;
+        &lt;p&gt;Email: computer.department@example.com&lt;/p&gt;
+        &lt;p&gt;Phone: 00000 00000&lt;/p&gt;
+        &lt;p&gt;College Address: Your College Address&lt;/p&gt;
+    &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre></article>
+<article>
+<h2>Q14. Write a JavaScript program to validate an email ID entered by the user.</h2>
+<p><span class='tag'>File:</span> <code>email-validation.html</code> &nbsp; <span class='tag'>Type:</span> HTML + JavaScript</p>
+<h3>Steps to run</h3><ol>
+<li>Save as email-validation.html.</li>
+<li>Open in a browser or use VS Code Live Server.</li>
+<li>Enter an email address and click Validate.</li>
+</ol><h3>Program code</h3><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Email Validation&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h2&gt;Email Validation&lt;/h2&gt;
+    &lt;input type=&quot;text&quot; id=&quot;email&quot; placeholder=&quot;Enter email address&quot;&gt;
+    &lt;button onclick=&quot;validateEmail()&quot;&gt;Validate&lt;/button&gt;
+    &lt;p id=&quot;result&quot;&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        function validateEmail() {
+            const email = document.getElementById(&quot;email&quot;).value.trim();
+            const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (pattern.test(email)) {
+                document.getElementById(&quot;result&quot;).textContent =
+                    &quot;Valid email address&quot;;
+            } else {
+                document.getElementById(&quot;result&quot;).textContent =
+                    &quot;Invalid email address&quot;;
+            }
+        }
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre></article>
+<article>
+<h2>Q15. Create an HTML form using JavaScript to validate student name, email and password.</h2>
+<p><span class='tag'>File:</span> <code>student-validation.html</code> &nbsp; <span class='tag'>Type:</span> HTML + JavaScript</p>
+<h3>Steps to run</h3><ol>
+<li>Save as student-validation.html.</li>
+<li>Open in a browser or use VS Code Live Server.</li>
+<li>Try submitting empty or invalid fields, then enter valid details.</li>
+</ol><h3>Program code</h3><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Student Form Validation&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h2&gt;Student Registration Form&lt;/h2&gt;
+
+    &lt;form onsubmit=&quot;return validateForm()&quot;&gt;
+        &lt;label&gt;Name:&lt;/label&gt;
+        &lt;input type=&quot;text&quot; id=&quot;name&quot;&gt;&lt;br&gt;&lt;br&gt;
+
+        &lt;label&gt;Email:&lt;/label&gt;
+        &lt;input type=&quot;text&quot; id=&quot;email&quot;&gt;&lt;br&gt;&lt;br&gt;
+
+        &lt;label&gt;Password:&lt;/label&gt;
+        &lt;input type=&quot;password&quot; id=&quot;password&quot;&gt;&lt;br&gt;&lt;br&gt;
+
+        &lt;button type=&quot;submit&quot;&gt;Register&lt;/button&gt;
+    &lt;/form&gt;
+
+    &lt;p id=&quot;message&quot;&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        function validateForm() {
+            const name = document.getElementById(&quot;name&quot;).value.trim();
+            const email = document.getElementById(&quot;email&quot;).value.trim();
+            const password = document.getElementById(&quot;password&quot;).value;
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (name === &quot;&quot;) {
+                showMessage(&quot;Please enter your name.&quot;);
+                return false;
+            }
+            if (!emailPattern.test(email)) {
+                showMessage(&quot;Please enter a valid email.&quot;);
+                return false;
+            }
+            if (password.length &lt; 8) {
+                showMessage(&quot;Password must contain at least 8 characters.&quot;);
+                return false;
+            }
+
+            showMessage(&quot;Registration form submitted successfully!&quot;);
+            return false;
+        }
+
+        function showMessage(text) {
+            document.getElementById(&quot;message&quot;).textContent = text;
+        }
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre></article>
+<article>
+<h2>Q16. Create a webpage using the DOM to change the page background colour automatically every five seconds.</h2>
+<p><span class='tag'>File:</span> <code>background-change.html</code> &nbsp; <span class='tag'>Type:</span> HTML + JavaScript DOM</p>
+<h3>Steps to run</h3><ol>
+<li>Save as background-change.html.</li>
+<li>Open in a browser or use VS Code Live Server.</li>
+<li>The page background changes automatically every 5 seconds.</li>
+</ol><h3>Program code</h3><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Automatic Background Change&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h2&gt;Background Color Changes Every 5 Seconds&lt;/h2&gt;
+    &lt;p&gt;This page uses JavaScript DOM to change its background.&lt;/p&gt;
+
+    &lt;script&gt;
+        const colors = [
+            &quot;lightblue&quot;,
+            &quot;lightgreen&quot;,
+            &quot;lightyellow&quot;,
+            &quot;lightpink&quot;,
+            &quot;lavender&quot;
+        ];
+
+        let index = 0;
+
+        setInterval(function () {
+            document.body.style.backgroundColor = colors[index];
+            index = (index + 1) % colors.length;
+        }, 5000);
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre></article>
+</main></body></html>
